@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AeroDesk</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- HEADER -->
+        <div class="header">
+            ✈️ <span>AeroDesk</span>
+            <p>Airport Check-in System</p>
+        </div>
+
+        <!-- NAV -->
+        <div class="nav">
+            <button onclick="openTab('add')" class="active">➕ Add Passenger</button>
+            <button onclick="openTab('queue')">🕒 Queue <span id="queueCount">0</span></button>
+            <button onclick="openTab('history')">✅ Checked</button>
+        </div>
+
+        <!-- ADD PASSENGER -->
+        <div id="add" class="tab active-tab">
+            <div class="card">
+                <h2>👤 New Passenger</h2>
+
+                <input id="name" placeholder="Passenger Name">
+                <input id="flight" placeholder="Flight Number">
+
+                <p class="label">Travel Class</p>
+
+                <div class="travel-class">
+                    <button onclick="selectClass('Business', this)" class="active">🏅 Business</button>
+                    <button onclick="selectClass('Priority', this)">⭐ Priority</button>
+                    <button onclick="selectClass('Economy', this)">💺 Economy</button>
+                </div>
+
+                <button class="main-btn" onclick="addPassenger()">Add to Queue →</button>
+            </div>
+        </div>
+
+        <!-- QUEUE -->
+        <div id="queue" class="tab">
+            <div class="card">
+                <h2>🕒 Waiting Queue</h2>
+                <ul id="queueList"></ul>
+                <button class="main-btn" onclick="serve()">Check-in Next Passenger</button>
+            </div>
+        </div>
+
+        <!-- HISTORY -->
+        <div id="history" class="tab">
+            <div class="card">
+                <h2>✅ Checked-In Passengers</h2>
+
+                <div class="stats">
+                    <div class="box">
+                        <h3 id="total">0</h3>
+                        <p>Total</p>
+                    </div>
+
+                    <div class="box">
+                        <h3 id="business">0</h3>
+                        <p>Business</p>
+                    </div>
+
+                    <div class="box">
+                        <h3 id="priority">0</h3> <!-- ADD THIS -->
+                        <p>Priority</p>
+                    </div>
+
+                    <div class="box">
+                        <h3 id="economy">0</h3>
+                        <p>Economy</p>
+                    </div>
+                </div>
+                <table>
+                    <tbody id="historyList"></tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
